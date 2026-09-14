@@ -83,6 +83,12 @@ function detectarColision() {
         aparecerComida();
         puntos = puntos + 1;
         mostrarEnSpan("puntos", puntos);
+        tiempo = tiempo + 1;
+        mostrarEnSpan("tiempo", tiempo);
+        if (puntos == 6) {
+            alert("GANADOR DE GANADORES");
+            clearInterval(intervalo);
+        }
     }
 }
 
@@ -95,4 +101,16 @@ function aparecerComida() {
 function restarTiempo() {
     tiempo = tiempo - 1;
     mostrarEnSpan("tiempo", tiempo);
+    if (tiempo == 0) {
+        alert ("no lo lograste, no serás tan grande como garlfield");
+        clearInterval(intervalo)
+    }
+}
+
+function reiniciar() {
+    puntaje = 0;
+    tiempo = 10;
+    mostrarEnSpan("tiempo", tiempo);
+    mostrarEnSpan("puntaje", puntaje);
+    iniciar();
 }
