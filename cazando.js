@@ -5,6 +5,7 @@ let gatoX = 0;
 let gatoY = 0;
 let comidaX = 0;
 let comidaY = 0;
+let puntos = 0;
 
 const ALTO_GATO = 40;
 const ANCHO_GATO = 30;
@@ -77,6 +78,8 @@ function detectarColision() {
         comidaY < gatoY + ALTO_GATO) {
         alert("bien hecho, sigue comiendo para parecer a garlfield");
         aparecerComida();
+        puntos = puntos + 1;
+        mostrarEnSpan("puntos", puntos);
     }
 }
 
