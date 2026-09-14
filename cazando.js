@@ -18,6 +18,14 @@ function iniciarJuego() {
     comidaY = canvas.height - ALTO_COMIDA;
     graficarComida();
     graficarGato();
+    aparecerComida();
+    detectarColision();
+}
+
+function actualizarPantalla() {
+    limpiarcanva();
+    graficarGato();
+    graficarComida();
 }
 
 function graficarGato() {
@@ -34,30 +42,46 @@ function graficarRectangulo(x, y, ancho, alto, color) {
 }
 
 function limpiarcanva() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0,0,canvas.width,canvas.height,);
     graficarComida();
 }
 
 function moverIzquierda() {
     gatoX = gatoX - 10;
-    limpiarcanva();
-    graficarGato();
+    actualizarPantalla();
+    detectarColision();
 }
 
 function moverDerecha() {
     gatoX = gatoX + 10;
-    limpiarcanva();
-    graficarGato();
+    actualizarPantalla();
+    detectarColision();
 }
 
 function moverArriba() {
     gatoY = gatoY - 10;
-    limpiarcanva();
-    graficarGato();
+    actualizarPantalla();
+    detectarColision();
 }
 
 function moverAbajo() {
     gatoY = gatoY + 10;
-    limpiarcanva();
-    graficarGato();
+    actualizarPantalla();
+    detectarColision();
+}
+
+function detectarColision() {
+    if (comidaX + ANCHO_COMIDA > gatoX &&
+        comidaX < gatoX + ANCHO_GATO &&
+        comidaY + ALTO_COMIDA > gatoY &&
+        comidaY < gatoY + ALTO_GATO) {
+        alert("bien hecho, sigue comiendo para parecer a garlfield");
+        aparecerComida();
+    }
+}
+
+function aparecerComida() {
+    comidaX = generarAleatorio(0,canvas.width-ANCHO_COMIDA);
+    comidaY = generarAleatorio(0,canvas.height-ALTO_COMIDA);
+    actualizarPantalla();
 }
