@@ -112,5 +112,5 @@ function reiniciar() {
     tiempo = 10;
     mostrarEnSpan("tiempo", tiempo);
     mostrarEnSpan("puntaje", puntaje);
-    iniciar();
+    iniciarJuego();
 }
